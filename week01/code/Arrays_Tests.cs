@@ -8,7 +8,15 @@ public class MultiplesOfTests
     [TestMethod]
     public void TestMultiplesOf_Whole()
     {
+
+
+        Console.WriteLine("## TestMultiplesOf_Whole");
+        
         double[] multiples = Arrays.MultiplesOf(7, 5);
+
+        Console.WriteLine(multiples);
+        
+
         CollectionAssert.AreEqual(new double[] { 7, 14, 21, 28, 35 }, multiples);
     }
 

@@ -1,3 +1,5 @@
+using System.Reflection;
+
 public static class Divisors {
     /// <summary>
     /// Entry point for the Divisors class
@@ -18,7 +20,12 @@ public static class Divisors {
     /// <returns>List of divisors</returns>
     private static List<int> FindDivisors(int number) {
         List<int> results = new();
-        // TODO problem 1
+        // TODO problem 1} 
+        for(int seeking=1 ; seeking < number; seeking++ ){
+                         if( (number % seeking) ==0){
+                 results.Add(seeking);
+            }
+        }
         return results;
     }
 }

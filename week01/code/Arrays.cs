@@ -13,7 +13,9 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        double [] myarray = new double[length];
+        for(int a=0;a<length;a++) myarray[a]=( number) * ((double)(a+1)) ;
+        return myarray; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +31,11 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        int count = data.Count;
+        int positions = amount % count; // Para manejar rotaciones mayores que el tamaño de la lista
+        if (positions == 0) return; // No hay nada que rotar
+        var temp = data.GetRange(count - positions, positions);
+        data.RemoveRange(count - positions, positions);
+        data.InsertRange(0, temp);
     }
 }
