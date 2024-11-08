@@ -13,8 +13,9 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        double [] myarray = new double[length];
-        for(int a=0;a<length;a++) myarray[a]=( number) * ((double)(a+1)) ;
+        
+        double [] myarray = new double[length]; // reserve the momory side to allocate all datada, based in the length of data series. 
+        for(int a=0;a<length;a++) myarray[a]=( number) * ((double)(a+1)) ; // iterate de serie fron 0 to lenght of data serie minus one.  while iterate, strore in the array of data current position the current position plus one and multiply for variable multiple.
         return myarray; // replace this return statement with your own
     }
 
@@ -31,7 +32,7 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
-        int count = data.Count;
+        int count = data.Count; // determine the lenght of data array serie
         int positions = amount % count; // determine the module of  position
         Console.WriteLine(positions );
 
