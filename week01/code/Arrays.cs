@@ -32,10 +32,17 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
         int count = data.Count;
-        int positions = amount % count; // Para manejar rotaciones mayores que el tamaño de la lista
-        if (positions == 0) return; // No hay nada que rotar
-        var temp = data.GetRange(count - positions, positions);
-        data.RemoveRange(count - positions, positions);
-        data.InsertRange(0, temp);
+        int positions = amount % count; // determine the module of  position
+        Console.WriteLine(positions );
+
+        if (positions == 0) return; // check if is posible ratate, if module is 0, its don't possible
+        int initial=count - positions; //determine a fist position to rotate
+        
+        Console.WriteLine(initial );
+        
+        var temp = data.GetRange(initial, positions); // obtain data to rotate, from start to end range
+        data.RemoveRange(initial, positions); //remove the range of data, from original data serie.  
+        data.InsertRange(0, temp); // add in the first position of serie, the data removed from oringal range.
+        
     }
 }
