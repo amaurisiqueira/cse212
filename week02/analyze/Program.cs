@@ -37,3 +37,33 @@ try {
 catch (ApplicationException e) {
     Console.WriteLine(e.Message);
 }
+
+
+Console.WriteLine("-------ffffffffff-------------");
+
+try {
+    MysteryStack2.Run("3 4 5 6 * +");
+}
+catch (ApplicationException e) {
+    Console.WriteLine(e.Message);
+}
+try {
+    MysteryStack2.Run("3 4 * ^");
+}
+catch (ApplicationException e) {
+    Console.WriteLine(e.Message);
+}
+
+try {
+    MysteryStack2.Run("3 4 * +");
+}
+catch (ApplicationException e) {
+    Console.WriteLine(e.Message);
+}
+
+try {
+    MysteryStack2.Run("3 4 5 * +");
+}
+catch (ApplicationException e) {
+    Console.WriteLine(e.Message);
+}  
