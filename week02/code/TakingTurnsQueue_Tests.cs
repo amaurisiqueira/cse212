@@ -34,9 +34,11 @@ public class TakingTurnsQueueTests
             }
 
             var person = players.GetNextPerson();
+            Console.WriteLine("expected:", expectedResult[i].Name, "queue name", person.Name );
             Assert.AreEqual(expectedResult[i].Name, person.Name);
             i++;
         }
+        Console.WriteLine("FINISH TestTakingTurnsQueue_FiniteRepetition-----------------------");
     }
 
     [TestMethod]
@@ -79,6 +81,8 @@ public class TakingTurnsQueueTests
 
             i++;
         }
+        
+        Console.WriteLine("FINISH TestTakingTurnsQueue_AddPlayerMidway-----------------------");
     }
 
     [TestMethod]
