@@ -170,8 +170,8 @@ public class PriorityQueueTests
             var removed = priorityQueue.Dequeue();//get a removed element
             Console.WriteLine("expected:", expectedResult[i].Value, "queue name", removed  );
             Assert.AreEqual(expectedResult[i].Value, removed);
- 
-             
+            i++;
+
         }
         Console.WriteLine("FINISH priorityQueue #4 test-----------------------");
         
