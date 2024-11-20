@@ -11,7 +11,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3) and
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: There was an issue with the GetNextPerson function, which always left 1 element unremoved from the buffer. After correcting the function, the buffer could be completely cleared.
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
@@ -45,7 +45,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
     // After running 5 times, add George with 3 turns.  Run until the queue is empty.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, George, Sue, Tim, George, Tim, George
-    // Defect(s) Found: 
+    // Defect(s) Found: No problems occurred when executing the function.
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
@@ -89,7 +89,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: When the turn was zero, the GetNextPerson function was not able to re-enter the element when its turn was equal to zero. For this reason, the criterion person.Turns == 0 was added to the GetNextPerson function, to re-enter the elements whose turns are equal to zero.
     public void TestTakingTurnsQueue_ForeverZero()
     {
         var timTurns = 0;
@@ -120,7 +120,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found:  When the turn was zero, the GetNextPerson function was not able to re-enter the element when its turn was equal to zero. For this reason, the criterion person.Turns <= 0 was added to the GetNextPerson function, to re-enter the elements whose turns are equal or less to zero.
     public void TestTakingTurnsQueue_ForeverNegative()
     {
         var timTurns = -3;

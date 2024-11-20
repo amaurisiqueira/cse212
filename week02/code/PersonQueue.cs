@@ -14,8 +14,9 @@ public class PersonQueue
     public void Enqueue(Person person)
     {
         //_queue.Insert(0, person);
-        _queue.Insert(_queue.Count, person);
-        //_queue.Add(person);
+        // _queue.Insert(_queue.Count, person);
+        _queue.Add(person);
+        
         
     }
 
