@@ -11,14 +11,14 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3) and
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: There was an issue with the GetNextPerson function, which always left 1 element unremoved from the buffer. After correcting the function, the buffer could be completely cleared.
+    // Defect(s) Found: In the original PersonQueue class, in the Enqueue procedure, I was always adding the elements at position zero _queue.Insert(0, person). Changed the function to add " _queue.Add(person);" at the end.
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
         var tim = new Person("Tim", 5);
         var sue = new Person("Sue", 3);
 
-        Person[] expectedResult = [bob, tim, sue, bob, tim, sue, tim, sue, tim, tim];
+        Person[] expectedResult = {bob, tim, sue, bob, tim, sue, tim, sue, tim, tim};
 
         var players = new TakingTurnsQueue();
         players.AddPerson(bob.Name, bob.Turns);
@@ -53,7 +53,7 @@ public class TakingTurnsQueueTests
         var sue = new Person("Sue", 3);
         var george = new Person("George", 3);
 
-        Person[] expectedResult = [bob, tim, sue, bob, tim, sue, tim, george, sue, tim, george, tim, george];
+        Person[] expectedResult = {bob, tim, sue, bob, tim, sue, tim, george, sue, tim, george, tim, george};
 
         var players = new TakingTurnsQueue();
         players.AddPerson(bob.Name, bob.Turns);
