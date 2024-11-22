@@ -22,7 +22,26 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        var myReturn = new List<string>();
+        var valuesSeen = new HashSet<string>();
+        foreach (var word in words)
+        {
+            string toFind = string.Concat(word[1],word[0]);
+            if (valuesSeen.Contains(toFind))
+            {
+                
+                myReturn.Add( string.Concat(word, " & ",toFind)) ;
+            }
+            else
+            {
+                valuesSeen.Add(word);    
+            } 
+            
+        }
+        
+        
+        
+        return myReturn.ToArray();
     }
 
     /// <summary>
@@ -42,6 +61,12 @@ public static class SetsAndMaps
         foreach (var line in File.ReadLines(filename))
         {
             var fields = line.Split(",");
+            if (degrees.ContainsKey(fields[3])) {
+                degrees[fields[3] ] += 1;
+            } else {
+                degrees[fields[3] ] = 1;
+            }
+            
             // TODO Problem 2 - ADD YOUR CODE HERE
         }
 
