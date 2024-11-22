@@ -91,8 +91,43 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+
+        // Eliminar espacios y convertir a mayúsculas
+        word1 = word1.Replace(" ", "").ToUpper();
+        word2 = word2.Replace(" ", "").ToUpper();
+
+        // Verificar si las palabras tienen la misma longitud
+        if (word1.Length != word2.Length)
+        {
+            return false;
+        }
+
+        // Crear un diccionario para contar las letras en word1
+        var letterCount = new Dictionary<char, int>();
+        foreach (char letter in word1)
+        {
+            if (letterCount.ContainsKey(letter))
+            {
+                letterCount[letter]++;
+            }
+            else
+            {
+                letterCount[letter] = 1;
+            }
+        }
+
+        // Verificar si las letras en word2 coinciden con el conteo en word1
+        foreach (char letter in word2)
+        {
+            if (!letterCount.ContainsKey(letter) || letterCount[letter] == 0)
+            {
+                return false;
+            }
+            letterCount[letter]--;
+        }
+
+        return true;
+        
     }
 
     /// <summary>
