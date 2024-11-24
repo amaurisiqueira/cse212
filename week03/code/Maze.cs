@@ -14,8 +14,17 @@
 /// If there is a wall, then throw an InvalidOperationException with the message "Can't go that way!".  If there is no wall,
 /// then the 'currX' and 'currY' values should be changed.
 /// </summary>
+
+
 public class Maze
 {
+    
+    const int LEFT= 0;
+    const int RIGHT= 1;
+    const int UP= 2;
+    const int DOWN= 3;
+    
+    
     private readonly Dictionary<ValueTuple<int, int>, bool[]> _mazeMap;
     private int _currX = 1;
     private int _currY = 1;
@@ -25,6 +34,75 @@ public class Maze
         _mazeMap = mazeMap;
     }
 
+    
+    private void acctionMove(int command)
+    {
+        bool[] valueAtPosition;
+        // FILL IN CODE
+        int myx = _currX;
+        int myy= _currY;
+
+   
+        if ( _mazeMap.TryGetValue((myx, myy), out valueAtPosition))
+        {
+            if (valueAtPosition != null)
+            {
+                if (valueAtPosition[command])   //allow arrive move
+                {
+                    switch (command)
+                    {
+                     
+                        case LEFT:
+                        {
+                            --myx;
+                            break;
+                        }
+                        case RIGHT:
+                        {
+                            ++myx;
+                            break;
+                        }    
+                        case UP:
+                        {
+                            --myy;
+                            break;
+                        }      
+                        case DOWN:
+                        {
+                            ++myy;
+                            break;
+                        }       
+                    }
+                    
+                    var newPosition = (myx, myy);
+                    if (_mazeMap.ContainsKey(newPosition))
+                    {
+                        Console.WriteLine(valueAtPosition);
+                        _currY = myy;
+                        _currX = myx;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Can't go that way!");
+                         
+                    }
+                }
+                else
+                {
+                    throw new InvalidOperationException("Can't go that way!");
+                }    
+            } else {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+            
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        
+    }
+    
     // TODO Problem 4 - ADD YOUR CODE HERE
     /// <summary>
     /// Check to see if you can move left.  If you can, then move.  If you
@@ -33,6 +111,7 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        acctionMove(LEFT);
     }
 
     /// <summary>
@@ -41,16 +120,26 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
+         
         // FILL IN CODE
+        acctionMove(RIGHT);
+
     }
 
+    
     /// <summary>
     /// Check to see if you can move up.  If you can, then move.  If you
     /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
     /// </summary>
     public void MoveUp()
     {
+        
         // FILL IN CODE
+        acctionMove(UP);
+
+
+
+
     }
 
     /// <summary>
@@ -60,6 +149,7 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        acctionMove(DOWN);
     }
 
     public string GetStatus()
