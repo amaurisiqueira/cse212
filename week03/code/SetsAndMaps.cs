@@ -92,17 +92,17 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
 
-        // Eliminar espacios y convertir a mayúsculas
+        //Remove spaces and convert to uppercase
         word1 = word1.Replace(" ", "").ToUpper();
         word2 = word2.Replace(" ", "").ToUpper();
 
-        // Verificar si las palabras tienen la misma longitud
+        //Check if words have the same length
         if (word1.Length != word2.Length)
         {
             return false;
         }
 
-        // Crear un diccionario para contar las letras en word1
+        // Create a dictionary to count letters in word1
         var letterCount = new Dictionary<char, int>();
         foreach (char letter in word1)
         {
@@ -116,7 +116,7 @@ public static class SetsAndMaps
             }
         }
 
-        // Verificar si las letras en word2 coinciden con el conteo en word1
+        // Check if letters in word2 match the count in word1
         foreach (char letter in word2)
         {
             if (!letterCount.ContainsKey(letter) || letterCount[letter] == 0)

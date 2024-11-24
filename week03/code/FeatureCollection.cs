@@ -1,5 +1,4 @@
-
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+ 
     public class Feature
     {
         public string type { get; set; }
