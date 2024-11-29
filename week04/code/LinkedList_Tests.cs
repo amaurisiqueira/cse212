@@ -229,6 +229,7 @@ public class ReverseTests
         ll.InsertHead(4);
         ll.InsertHead(2);
         ll.InsertHead(5);
+        Console.WriteLine(ll.Reverse().AsString());
         Assert.AreEqual("<IEnumerable>{2, 2, 3, 4, 2, 5}", ll.Reverse().AsString());
     }
 }
