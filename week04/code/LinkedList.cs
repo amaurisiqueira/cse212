@@ -44,9 +44,9 @@ public class LinkedList : IEnumerable<int>
         // If the list is not empty, then only head will be affected.
         else
         {
-            newNode.Prev = _tail; // Connect new node to the previous head
-            _tail.Next = newNode; // Connect the previous head to the new node
-            _tail = newNode; // Update the head to point to the new node
+            newNode.Prev = _tail; 
+            _tail.Next = newNode; 
+            _tail = newNode; 
         }
         
         
@@ -141,16 +141,11 @@ public class LinkedList : IEnumerable<int>
     public void Remove(int value)
     {
         // TODO Problem 3
-        // Search for the node that matches 'value' by starting at the 
-        // head of the list.
         Node? curr = _head;
         while (curr is not null)
         {
             if (curr.Data == value)
             {
-                // If the location of 'value' is at the end of the list,
-                // then we can call insert_tail to add 'new_value'   
-                
                 
                 if (curr.Prev is not null)
                 {
@@ -158,29 +153,16 @@ public class LinkedList : IEnumerable<int>
                     curr.Prev.Next= curr.Next;
                     if(curr.Next is not null) curr.Next.Prev=curr.Prev;
                 }
-                // For any other location of 'value', need to create a 
-                // new node and reconnect the links to insert.
+              
                 else
                 {
                     //no hay previo, este es el primero elemento.
                     _head = curr.Next;
-                    if(_head is null) _tail = null;
-                    
-                    /*Node newNode = new(newValue);
-                    newNode.Prev = curr; // Connect new node to the node containing 'value'
-                    newNode.Next = curr.Next; // Connect new node to the node after 'value'
-                    curr.Next!.Prev = newNode; // Connect node after 'value' to the new node
-                    curr.Next = newNode; // Connect the node containing 'value' to the new node*/
+                    if(_head is null) _tail = null; 
                     
                 }
-
                 return; // We can exit the function after we insert
-                
-                
             }
-            
-            
-
             curr = curr.Next; // Go to the next node to search for 'value'
         }
         
@@ -198,7 +180,7 @@ public class LinkedList : IEnumerable<int>
             if (curr.Data == oldValue)
             {
                 curr.Data = newValue;
-                //return; // We can exit the function after we insert
+        
             }
             curr = curr.Next; // Go to the next node to search for 'value'
         }
@@ -233,11 +215,11 @@ public class LinkedList : IEnumerable<int>
     public IEnumerable Reverse()
     {
         // TODO Problem 5
-        var curr = _tail; // Comienza desde el final de la lista
+        var curr = _tail;  
         while (curr is not null)
         {
-            yield return curr.Data; // Devuelve el dato del nodo actual
-            curr = curr.Prev; // Avanza al nodo anterior
+            yield return curr.Data;  
+            curr = curr.Prev;  
         }
     
     }
