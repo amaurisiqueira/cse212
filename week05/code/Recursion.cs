@@ -120,6 +120,8 @@ public static class Recursion
 
         // Solve using recursion
         decimal ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+        
+        remember.Add( s, ways );
         return ways;
     }
 
