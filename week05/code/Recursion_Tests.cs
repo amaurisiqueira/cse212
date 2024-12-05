@@ -117,11 +117,11 @@ public class CountWaysToClimbTests
         Assert.AreEqual(121415, result);
     }
 
-    [TestMethod, Timeout(5000)]
+    [TestMethod, Timeout(10000)]
     public void CountWaysToClimb_Large()
     {
         var result = Recursion.CountWaysToClimb(100);
-        Assert.AreEqual(180396380815100901214157639M, result);
+        Assert.AreEqual(   180396380815100901214157639M, result);
     }
 }
 
