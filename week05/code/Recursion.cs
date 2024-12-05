@@ -157,14 +157,16 @@ public static class Recursion
             return;
         }
 
-        string part1 = "";
-        if(position>0)part1 =  pattern.Substring(0, position );
-        string part2 = pattern.Substring(position+1);
+        char[] part1 = pattern.ToCharArray();
+        char[] part2 = pattern.ToCharArray();
+        part1[position] = '0';
+        part2[position] = '1';
         
-        string newPattern_0 = part1 + "0" + part2;
-        WildcardBinary(newPattern_0, results); 
-        string newPattern_1 = part1 + "1" + part2;
-        WildcardBinary(newPattern_1, results); 
+        string p1  = new string(part1);
+        string p2  = new string(part2);
+        
+        WildcardBinary(p1, results); 
+        WildcardBinary(p2, results); 
         
     }
 
@@ -174,17 +176,38 @@ public static class Recursion
     /// </summary>
     public static void SolveMaze(List<string> results, Maze maze, int x = 0, int y = 0, List<ValueTuple<int, int>>? currPath = null)
     {
-        // If this is the first time running the function, then we need
-        // to initialize the currPath list.
         if (currPath == null) {
             currPath = new List<ValueTuple<int, int>>();
         }
-        
-        // currPath.Add((1,2)); // Use this syntax to add to the current path
 
-        // TODO Start Problem 5
-        // ADD CODE HERE
+        currPath.Add((x, y));
 
-        // results.Add(currPath.AsString()); // Use this to add your path to the results array keeping track of complete maze solutions when you find the solution.
-    }
+        if (maze.IsEnd(x, y))
+        {
+            results.Add(currPath.AsString());
+        }
+        else
+        {
+            // posible moviment 
+            int[] dx = {  0, 0, -1, 1 };
+            int[] dy = { -1, 1, 0, 0 };
+
+            for (int i = 0; i < dx.Length; i++)
+            {
+                int newX = x + dx[i];
+                int newY = y + dy[i];
+
+                if (newX >= 0 && newX < maze.Width && newY >= 0 && newY < maze.Height)
+                {
+                    if (maze.IsValidMove(currPath, newX, newY))
+                    {
+                        SolveMaze(results, maze, newX, newY, currPath);
+                    }
+                }
+            }
+        }
+
+        currPath.RemoveAt(currPath.Count - 1);
+		
+    }    
 }
