@@ -188,7 +188,7 @@ public static class Recursion
         }
         else
         {
-            // posible moviment 
+            // posible moviments 
             int[] dx = {  0, 0, -1, 1 };
             int[] dy = { -1, 1, 0, 0 };
 
@@ -206,6 +206,7 @@ public static class Recursion
                 }
             }
         }
+      //  Console.WriteLine(currPath.AsString());
 
         currPath.RemoveAt(currPath.Count - 1);
 		
