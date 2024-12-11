@@ -23,23 +23,63 @@ public class Node
         }
         else
         {
-            // Insert to the right
-            if (Right is null)
-                Right = new Node(value);
-            else
-                Right.Insert(value);
+            if (value != Data)
+            {
+                // Insert to the right
+                if (Right is null)
+                    Right = new Node(value);
+                else
+                    Right.Insert(value);
+            }
+
+
+
         }
     }
 
     public bool Contains(int value)
     {
         // TODO Start Problem 2
+
+        Node myNode = this;
+
+        while (myNode != null)
+        {
+            if (value < myNode.Data)
+            {
+                myNode = myNode.Left;
+            }
+            else if (value > myNode.Data)
+            {
+                myNode = myNode.Right;
+            }
+            else
+            {
+                return true; // Encontramos el valor en el árbol
+            }
+        }
         return false;
     }
 
     public int GetHeight()
     {
+        
+        int leftCount = 0;
+        int rigthCount = 0;
+        Node myNode = this;
+        while (myNode != null)
+        {
+            myNode = myNode.Left;
+            if (myNode  is not null) leftCount++;
+        }
+        myNode = this;
+        while (myNode != null)
+        {
+            myNode = myNode.Right;
+            if (myNode  is not null) rigthCount++;
+        }
+        
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        return 1 + Math.Max(leftCount, rigthCount); ; // Replace this line with the correct return statement(s)
     }
 }
