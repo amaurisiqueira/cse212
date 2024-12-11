@@ -63,7 +63,7 @@ public class Node
 
     public int GetHeight()
     {
-        
+        // TODO Start Problem 4
         int leftCount = 0;
         int rigthCount = 0;
         Node myNode = this;
@@ -79,7 +79,7 @@ public class Node
             if (myNode  is not null) rigthCount++;
         }
         
-        // TODO Start Problem 4
+        
         return 1 + Math.Max(leftCount, rigthCount); ; // Replace this line with the correct return statement(s)
     }
 }
